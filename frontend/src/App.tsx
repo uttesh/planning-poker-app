@@ -7,9 +7,12 @@ import {
   Button,
   Card,
   Typography,
-  Grid,
   CardContent
 } from "@mui/material";
+
+import Grid from "@mui/material/Grid2";
+import { ParticipantsComponent } from "./components/Participants.component";
+import { SelectPointsComponent } from "./components/SelectPoint.component";
 
 interface RoomData {
   participants: string[];
@@ -60,7 +63,7 @@ const App: React.FC = () => {
         Story Point Planning Poker
       </Typography>
       <Grid container spacing={2} alignItems="center">
-        <Grid item>
+        <Grid>
           <TextField
             label="Room ID"
             value={roomId}
@@ -68,7 +71,7 @@ const App: React.FC = () => {
             variant="outlined"
           />
         </Grid>
-        <Grid item>
+        <Grid>
           <TextField
             label="Username"
             value={username}
@@ -76,7 +79,7 @@ const App: React.FC = () => {
             variant="outlined"
           />
         </Grid>
-        <Grid item>
+        <Grid>
           <Button variant="contained" color="primary" onClick={joinRoom}>
             Join Room
           </Button>
@@ -84,42 +87,14 @@ const App: React.FC = () => {
       </Grid>
 
       <div style={{ marginTop: "20px" }}>
-        <Typography variant="h6">Participants</Typography>
-        <Grid container spacing={2}>
-          {participants.map((participant, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card
-                style={{
-                  backgroundColor: hasVoted(participant) ? "#e0ffe0" : "#ffcccc"
-                }}
-              >
-                <CardContent>
-                  <Typography variant="h6">{participant}</Typography>
-                  <Typography variant="body1">
-                    Status: {hasVoted(participant) ? "Submitted" : "Pending"}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+        <ParticipantsComponent
+          hasVoted={hasVoted}
+          participants={participants}
+        />
       </div>
 
       <div style={{ marginTop: "20px" }}>
-        <Typography variant="h6">Select Your Points</Typography>
-        <Grid container spacing={2}>
-          {[1, 2, 3, 5, 8].map((point) => (
-            <Grid item key={point}>
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={() => submitVote(point)}
-              >
-                {point}
-              </Button>
-            </Grid>
-          ))}
-        </Grid>
+        <SelectPointsComponent submitVote={submitVote}></SelectPointsComponent>
       </div>
 
       <div style={{ marginTop: "20px" }}>

@@ -37,3 +37,11 @@ Once the container is running, you can access the application by navigating to h
 
 The frontend will be served directly.
 Any requests to /api/ will be proxied to the backend API running inside the Docker Compose network.
+
+## pull pre-build docker image to test
+```
+> docker pull uttesh/planning-poker-app:latest
+> docker run -p 80:80 -p 3001:3001 planning-poker-app
+```
+
+## 

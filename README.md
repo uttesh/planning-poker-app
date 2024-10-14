@@ -5,15 +5,22 @@ Jira sprint story points planning in the team, app allow the team member to prov
 ## Build frontend
 
 ```
-> yarn install
+> yarn install / npm i
 > yarn build
 ```
 
 ## Build backend
 
 ```
-> yarn install
+> yarn install / / npm i
 > yarn build
+```
+
+## Locally running
+
+```
+frontend> yarn run start
+backend> yarn run start
 ```
 
 ## docker build and run
